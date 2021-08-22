@@ -37,7 +37,7 @@ namespace PromotionEnginTest
         /// Scenario1s this instance.
         /// </summary>
         [TestMethod]
-        public void Scenario1()
+        public void ScenarioA()
         {
             //Scenario A
             //1 * A 50
@@ -51,7 +51,7 @@ namespace PromotionEnginTest
         }
 
         [TestMethod]
-        public void Scenario2()
+        public void ScenarioB()
         {
             //Scenario B
             //5 * A       130 + 2 * 50
@@ -66,6 +66,27 @@ namespace PromotionEnginTest
             };
 
             Assert.AreEqual(370, objPromotionService.GetTotalPrice(productList));
-        }       
+        }
+
+        /// <summary>
+        /// Scenarioes the c.
+        /// </summary>
+        [TestMethod]
+        public void ScenarioC()
+        {
+            //Scenario B
+            //5 * A       130 + 2 * 50
+            //5 * B       45 + 45 + 30
+            //1 * C       28
+            //Total 370    
+
+            productList = new List<Product>() {
+                new Product("A"), new Product("A"), new Product("A"),
+                new Product("B"), new Product("B"), new Product("B"), new Product("B"), new Product("B"),
+                new Product("C"),new Product("D")
+            };
+
+            Assert.AreEqual(280, objPromotionService.GetTotalPrice(productList));
+        }
     }
 }
