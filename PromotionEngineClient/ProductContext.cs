@@ -35,8 +35,12 @@ namespace PromotionEngineClient
 
                 objPromotion = new PromotionService();
                 int totalPrice = objPromotion.GetTotalPrice(products);
-                Console.WriteLine($"Total Price: { totalPrice}");
-                Console.ReadLine();
+                decimal origPrice = products.Sum(x => x.Price);
+                Console.WriteLine($"Original price: {origPrice}, Discount: {origPrice - totalPrice}, Total price under promotion: { totalPrice}");
+                Console.WriteLine("Are you want to continue? (y/n)");
+                string inputString = Console.ReadLine().ToString().ToLower();
+                if (inputString == "y")
+                    ProcessOrders();
             }
             catch (Exception ex)
             {
