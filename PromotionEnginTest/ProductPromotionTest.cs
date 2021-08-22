@@ -4,8 +4,11 @@ using System.Collections.Generic;
 
 namespace PromotionEnginTest
 {
+    /// <summary>
+    /// 
+    /// </summary>
     [TestClass]
-    public class UnitTest1
+    public class ProductPromotionTest
     {
         List<Product> productList;
         PromotionService objPromotionService;
@@ -30,18 +33,21 @@ namespace PromotionEnginTest
             objPromotionService = null;
         }
 
+        /// <summary>
+        /// Scenario1s this instance.
+        /// </summary>
         [TestMethod]
         public void Scenario1()
         {
-
             //Scenario A
             //1 * A 50
             //1 * B 30
             //1 * C 20
             //Total 100
 
-            productList = new List<Product>() { new Product("A"), new Product("B"), new Product("C") };
+            productList = new List<Product>() { new Product("A"), new Product("B"), new Product("C") };            
             
+            Assert.AreEqual(100, objPromotionService.GetTotalPrice(productList));
         }
     }
 }
