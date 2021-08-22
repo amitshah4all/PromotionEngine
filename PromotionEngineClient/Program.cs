@@ -66,7 +66,7 @@ namespace PromotionEngineClient
         private static int GetIntParsedValue(string inputValue)
         {
             Int32.TryParse(inputValue, out int returnValue);
-            if (returnValue != 0)
+            if (returnValue > 0)
                 return returnValue;
             else
             {
