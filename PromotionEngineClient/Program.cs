@@ -31,7 +31,7 @@ namespace PromotionEngineClient
                 products = new List<Product>();
                 Console.WriteLine("Enter number of Products (only numeric values allowed):");
 
-                int noOfProducts = Convert.ToInt32(Console.ReadLine());
+                int noOfProducts = GetIntParsedValue(Console.ReadLine());
                 string type = string.Empty;
                 for (int i = 1; i <= noOfProducts; i++)
                 {
@@ -55,6 +55,23 @@ namespace PromotionEngineClient
                 objPromotion = null;
                 objProduct = null;
                 products = null;
+            }
+        }
+
+        /// <summary>
+        /// Gets the int parsed value.
+        /// </summary>
+        /// <param name="inputValue">The input value.</param>
+        /// <returns></returns>
+        private static int GetIntParsedValue(string inputValue)
+        {
+            Int32.TryParse(inputValue, out int returnValue);
+            if (returnValue != 0)
+                return returnValue;
+            else
+            {
+                Console.WriteLine("Enter Valid int value:");
+                return GetIntParsedValue(Console.ReadLine().ToString());
             }
         }
     }
