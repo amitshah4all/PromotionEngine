@@ -20,7 +20,7 @@ namespace BusinessLogic
             {
                 //Declaration of local variables 
                 int productCountA = 0, productPriceA = 50, productCountB = 0, productPriceB = 30,
-                    productCountC = 0, productPriceC = 20, productCountD = 0, productPriceD = 15;
+                    productCountC = 0, productPriceC = 20, productCountD = 0, productPriceD = 15, productPriceCandD = 30;
 
                 foreach (Product pr in products)
                 {
@@ -43,13 +43,18 @@ namespace BusinessLogic
 
                 int totalPriceA = (productCountA / 3) * 130 + (productCountA % 3 * productPriceA);
                 int totalPriceB = (productCountB / 2) * 45 + (productCountB % 2 * productPriceB);
-                int totalPriceC = (productCountC * productPriceC);
-                int totalPriceD = (productCountD * productPriceD);
-                return totalPriceA + totalPriceB + totalPriceC + totalPriceD;
+
+                int groupCAndD = ((productCountC + productCountD) / 2);
+                int groupCandDPrice = groupCAndD * productPriceCandD;
+                
+                int totalPriceC = (productCountC - groupCAndD) * productPriceC;
+                int totalPriceD = (productCountD - groupCAndD) * productPriceD;
+
+                return totalPriceA + totalPriceB + totalPriceC + totalPriceD + groupCandDPrice;
             }
             catch (Exception ex)
             {
-                throw ex;                
+                throw ex;
             }
         }
     }

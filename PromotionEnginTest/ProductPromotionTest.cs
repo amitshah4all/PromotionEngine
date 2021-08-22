@@ -85,7 +85,6 @@ namespace PromotionEnginTest
                 new Product("B"), new Product("B"), new Product("B"), new Product("B"), new Product("B"),
                 new Product("C"),new Product("D")
             };
-
             Assert.AreEqual(280, objPromotionService.GetTotalPrice(productList));
         }
     }
