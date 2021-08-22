@@ -32,12 +32,12 @@ namespace PromotionEngineClient
                 Console.WriteLine("Enter number of Products (only numeric values allowed):");
 
                 int noOfProducts = GetIntParsedValue(Console.ReadLine());
-                string type = string.Empty;
+                string productType = string.Empty;
                 for (int i = 1; i <= noOfProducts; i++)
                 {
                     Console.WriteLine($"Order {i}: Enter the type of product:A, B, C or D");
-                    type = Console.ReadLine();
-                    objProduct = new Product(type);
+                    productType = CheckValidProductNames(Console.ReadLine(), i);
+                    objProduct = new Product(productType);
                     products.Add(objProduct);
                 }
 
@@ -73,6 +73,24 @@ namespace PromotionEngineClient
                 Console.WriteLine("Enter Valid int value:");
                 return GetIntParsedValue(Console.ReadLine().ToString());
             }
+        }
+
+        /// <summary>
+        /// Checks the parsed value.
+        /// </summary>
+        /// <param name="inputValue">The input value.</param>
+        /// <param name="orderNumber">The order number.</param>
+        /// <returns></returns>
+        private static string CheckValidProductNames(string inputValue, int orderNumber)
+        {
+            string[] validValues = { "A", "B", "C", "D" };
+            if (!validValues.Contains(inputValue.ToUpper()))
+            {
+                Console.WriteLine($"Order {orderNumber}: Invalid value entered: Please enter the type of product:A, B, C or D");
+                return CheckValidProductNames(Console.ReadLine().ToString(), orderNumber);
+            }
+            else
+                return inputValue;
         }
     }
 }
