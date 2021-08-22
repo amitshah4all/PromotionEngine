@@ -49,5 +49,23 @@ namespace PromotionEnginTest
             
             Assert.AreEqual(100, objPromotionService.GetTotalPrice(productList));
         }
+
+        [TestMethod]
+        public void Scenario2()
+        {
+            //Scenario B
+            //5 * A       130 + 2 * 50
+            //5 * B       45 + 45 + 30
+            //1 * C       28
+            //Total 370    
+
+            productList = new List<Product>() {
+                new Product("A"), new Product("A"), new Product("A"), new Product("A"), new Product("A"),
+                new Product("B"), new Product("B"), new Product("B"), new Product("B"), new Product("B"),
+                new Product("C"),
+            };
+
+            Assert.AreEqual(370, objPromotionService.GetTotalPrice(productList));
+        }       
     }
 }
